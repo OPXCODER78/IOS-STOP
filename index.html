@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOS Style Stopwatch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    .font-sf { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    body::-webkit-scrollbar { display: none; } /* Safari and Chrome */
+    body { -ms-overflow-style: none; }  /* IE and Edge */
+    body { scrollbar-width: none; }  /* Firefox */
+
+    /* Custom animation for lap entry */
+    @keyframes lapEnterAnimation {
+      0% {
+        opacity: 0;
+        transform: translateY(-15px) scale(0.98);
+        max-height: 0;
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        max-height: 70px; /* Ensure this is enough for lap items */
+      }
+    }
+    .animate-lapEnter {
+      animation: lapEnterAnimation 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    }
+    
+    /* Smooth scrolling for designated scroll areas */
+    .smooth-scroll {
+      scroll-behavior: smooth;
+    }
+
+    /* Animation for view transitions */
+    @keyframes fadeInView {
+      from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.99);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .animate-fadeInView {
+      animation: fadeInView 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    }
+
+    /* Transition for max-height for collapsible sections */
+    .max-h-0 { max-height: 0; }
+    .max-h-screen { max-height: 100vh; } /* Or a more specific large value like 1000px if known */
+    .transition-max-height {
+      transition-property: max-height, opacity;
+      transition-duration: 0.4s;
+      transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+      overflow: hidden;
+    }
+    
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/"
+  }
+}
+</script>
+</head>
+<body class="bg-black">
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html><link rel="stylesheet" href="index.css">
+<script src="index.tsx" type="module"></script>

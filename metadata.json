@@ -1,0 +1,5 @@
+{
+  "name": "iOS Style Stopwatch",
+  "description": "A stopwatch application with an iOS-inspired design, featuring digital and analog time displays, lap functionality, and start/stop/reset controls.",
+  "requestFramePermissions": []
+}
